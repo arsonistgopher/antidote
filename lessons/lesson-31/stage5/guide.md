@@ -74,15 +74,15 @@ The plan that was generated should make more sense now. Take the access port des
 
 __Human Errors__
 
-When humans get involved in troubleshooting, we have a tendency to change a bunch of stuff without clearing up 100% afterwards. When this happens with Terraform configured resources, the Terraform state cache could get out of sync with reality and luckily there is a way to sync it back up.
+When humans get involved in troubleshooting, we have a tendency to change a bunch of stuff without clearing up 100% afterwards. When this happens with Terraform configured resources, the Terraform state cache could get out of sync with reality and luckily there is a way to sync it back up. Providing you haven't changed the configuration group names or destroyed local state, a simple refresh like below will force the local state to be updated.
+
+*Please note, the below command if executed will not show anything. There isn't any local state currently to refresh!*
 
 ```
 terraform refresh
 ```
 
 Refresh performs a read of the resources and updates the state cache. If something has changed and you re-run `terraform plan`, the execution plan will reflect that of the Terraform resources and not the human changes. Great for golden state checking, but not great in what should be a fully automated set of infrastructure.
-
-The Junos provider doesn't quite support this, yet, but will soon!
 
 __Partial Delete__
 
@@ -91,7 +91,7 @@ What happens if you don't want to destroy everything in a set of Terraform confi
 ```
 terraform destroy -h
 ```
-<button type="button" class="btn btn-primary btn-sm" onclick="runSnippetInTab('terraform1', 5)">Run this snippet</button>
+<button type="button" class="btn btn-primary btn-sm" onclick="runSnippetInTab('terraform1', 6)">Run this snippet</button>
 
 See the `-target` argument?
 

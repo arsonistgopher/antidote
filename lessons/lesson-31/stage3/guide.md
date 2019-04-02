@@ -29,6 +29,8 @@ When this completes, not only are the resources created on Junos but also Terraf
 
 We can check on Junos that both the BGP peer is established and the interface is configured correctly.
 
+*Please be a little patient! If the BGP peer isn't up, it's just a case of timing and giving it ten seconds or so!*
+
 ```
 show interfaces em4
 show bgp summary
@@ -41,7 +43,7 @@ cat terraform.tfstate
 ```
 <button type="button" class="btn btn-primary btn-sm" onclick="runSnippetInTab('terraform1', 3)">Run this snippet</button>
 
-At this point we can also check to make sure that the cache reflects the plan:
+At this point we can also check to make sure that the cache reflects the plan by running the `terraform plan`. This operation actually does a refresh first, then calculates the plan. You can also force a refresh of local state against Junos with the operation `terraform refresh`.
 
 ```
 terraform plan
